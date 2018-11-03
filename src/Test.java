@@ -33,5 +33,13 @@ public class Test {
         }
         System.out.println("quick sort: " + (System.currentTimeMillis() - t));
         System.out.println(Arrays.toString(result));
+
+        t = System.currentTimeMillis();
+        MergeSort mergeSort = new MergeSort();
+        for (int i = 0; i < loopCount; i++) {
+            result = mergeSort.sort(arr);
+        }
+        System.out.println("merge sort: " + (System.currentTimeMillis() - t));
+        System.out.println(Arrays.toString(result));
     }
 }
