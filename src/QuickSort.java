@@ -3,7 +3,12 @@ import java.util.Arrays;
 /**
  * Created by krosshuang on 2018/11/3.
  */
-public class QuickSort {
+public class QuickSort implements ISort{
+
+    @Override
+    public int[] sort(int[] data) {
+        return quickSort(data);
+    }
 
     public static void main(String[] args) {
 
@@ -19,7 +24,7 @@ public class QuickSort {
         System.out.println(Arrays.toString(data));
     }
 
-    public static int[] quickSort(int[] arr) {
+    private static int[] quickSort(int[] arr) {
         if (arr == null) {
             return null;
         } else {

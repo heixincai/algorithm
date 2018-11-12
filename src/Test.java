@@ -5,8 +5,9 @@ import java.util.Arrays;
  */
 public class Test {
 
+    static int loopCount = 100000;
+
     public static void main(String[] args) {
-        int loopCount = 100000;
 
         int[] result = null;
 
@@ -20,26 +21,19 @@ public class Test {
             arr[i] = (int) (Math.random() * 10000);
         }
 
-        t = System.currentTimeMillis();
-        for (int i = 0; i < loopCount; i++) {
-            result = HeapSort.heapSort(arr, HeapSort.SortType.Increase);
-        }
-        System.out.println("heap sort: " + (System.currentTimeMillis() - t));
-        System.out.println(Arrays.toString(result));
+        testSort(arr, new HeapSort(), "heap sort");
+        testSort(arr, new QuickSort(), "quick sort");
+        testSort(arr, new MergeSort(), "merge sort");
+        testSort(arr, new InsertSort(), "insert sort");
+    }
 
-        t = System.currentTimeMillis();
-        for (int i = 0; i < loopCount; i++) {
-            result = QuickSort.quickSort(arr);
-        }
-        System.out.println("quick sort: " + (System.currentTimeMillis() - t));
-        System.out.println(Arrays.toString(result));
-
-        t = System.currentTimeMillis();
+    public static void testSort(int[] sortData, ISort sortImpl, String sortName) {
+        long t = System.currentTimeMillis();
         MergeSort mergeSort = new MergeSort();
         for (int i = 0; i < loopCount; i++) {
-            result = mergeSort.sort(arr);
+            sortData = mergeSort.sort(sortData);
         }
-        System.out.println("merge sort: " + (System.currentTimeMillis() - t));
-        System.out.println(Arrays.toString(result));
+        System.out.println(sortName + "(" + loopCount + "): " + (System.currentTimeMillis() - t));
+        System.out.println(Arrays.toString(sortData));
     }
 }
