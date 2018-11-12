@@ -13,13 +13,14 @@ public class Test {
 
         long t = System.currentTimeMillis();
 
-        final int DATA_SIZE = 100;
+        final int DATA_SIZE = 10;
 
         // data generate
         int[] arr = new int[DATA_SIZE];
         for (int i = 0; i < DATA_SIZE; i++) {
             arr[i] = (int) (Math.random() * 10000);
         }
+        System.out.println(Arrays.toString(arr));
 
         testSort(arr, new HeapSort(), "heap sort");
         testSort(arr, new QuickSort(), "quick sort");
@@ -29,9 +30,8 @@ public class Test {
 
     public static void testSort(int[] sortData, ISort sortImpl, String sortName) {
         long t = System.currentTimeMillis();
-        MergeSort mergeSort = new MergeSort();
         for (int i = 0; i < loopCount; i++) {
-            sortData = mergeSort.sort(sortData);
+            sortData = sortImpl.sort(sortData);
         }
         System.out.println(sortName + "(" + loopCount + "): " + (System.currentTimeMillis() - t));
         System.out.println(Arrays.toString(sortData));
