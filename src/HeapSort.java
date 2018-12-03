@@ -79,9 +79,6 @@ public class HeapSort implements ISort {
             return heap;
         }
 
-        // 标记是否改变过，如果改变了，需要再次执行本方法，直到没有变化为止
-        boolean isChange = false;
-
         for (int i = heapLength / 2 - 1; i >= 0; i--) { // 从最后一个有children的节点开始，向前遍历
 
             int leftIndex = i * 2 + 1; // left child index
@@ -91,12 +88,10 @@ public class HeapSort implements ISort {
                 if (sortType == SortType.Increase) {
                     if (heap[i] < heap[leftIndex]) { // 判断当前节点和左节点的大小，进行交换
                         swap(heap, i, leftIndex);
-                        isChange = true; // 每次交换，需要标记，发生了改变，这个过程需要再来一次
                     }
                 } else if (sortType == SortType.Decrease) {
                     if (heap[i] > heap[leftIndex]) {
                         swap(heap, i, leftIndex);
-                        isChange = true;
                     }
                 }
 
@@ -104,25 +99,17 @@ public class HeapSort implements ISort {
                     if (sortType == SortType.Increase) {
                         if (heap[i] < heap[rightIndex]) {
                             swap(heap, i, rightIndex);
-                            isChange = true;
                         }
                     } else if (sortType == SortType.Decrease) {
                         if (heap[i] > heap[rightIndex]) {
                             swap(heap, i, rightIndex);
-                            isChange = true;
                         }
                     }
                 }
             }
         }
 
-        if (isChange) {
-            // 如果改变了，需要再来一次
-            return maxHeapify(heap, heapLength, sortType);
-        } else {
-            // 如果每个节点都OK了，返回
-            return heap;
-        }
+        return heap;
     }
 
     public static void swap(int[] arr, int i, int j) {

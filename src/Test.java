@@ -13,7 +13,7 @@ public class Test {
 
         long t = System.currentTimeMillis();
 
-        final int DATA_SIZE = 10;
+        final int DATA_SIZE = 100;
 
         // data generate
         int[] arr = new int[DATA_SIZE];
@@ -26,6 +26,7 @@ public class Test {
         testSort(arr, new QuickSort(), "quick sort");
         testSort(arr, new MergeSort(), "merge sort");
         testSort(arr, new InsertSort(), "insert sort");
+        testSort(arr, new SelectionSort(), "SelectionSort");
     }
 
     public static void testSort(int[] sortData, ISort sortImpl, String sortName) {
