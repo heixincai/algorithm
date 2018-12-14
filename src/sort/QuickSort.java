@@ -1,9 +1,13 @@
+package sort;
+
+import sort.ISort;
+
 import java.util.Arrays;
 
 /**
  * Created by krosshuang on 2018/11/3.
  */
-public class QuickSort implements ISort{
+public class QuickSort implements ISort {
 
     @Override
     public int[] sort(int[] data) {

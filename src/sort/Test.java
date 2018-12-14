@@ -1,3 +1,7 @@
+package sort;
+
+import sort.*;
+
 import java.util.Arrays;
 
 /**
@@ -26,7 +30,7 @@ public class Test {
         testSort(arr, new QuickSort(), "quick sort");
         testSort(arr, new MergeSort(), "merge sort");
         testSort(arr, new InsertSort(), "insert sort");
-        testSort(arr, new SelectionSort(), "SelectionSort");
+        testSort(arr, new SelectionSort(), "sort.SelectionSort");
     }
 
     public static void testSort(int[] sortData, ISort sortImpl, String sortName) {

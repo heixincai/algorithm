@@ -1,3 +1,7 @@
+package sort;
+
+import sort.ISort;
+
 /**
  * Created by krosshuang on 2018/11/3.
  */
