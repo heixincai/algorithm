@@ -1,5 +1,6 @@
-package sort;
+package test;
 
+import search.BinarySearch;
 import sort.*;
 
 import java.util.Arrays;
@@ -31,6 +32,28 @@ public class Test {
         testSort(arr, new MergeSort(), "merge sort");
         testSort(arr, new InsertSort(), "insert sort");
         testSort(arr, new SelectionSort(), "sort.SelectionSort");
+
+        // test binary search
+
+        int[] sortedArr = new QuickSort().sort(arr);
+
+        System.out.println("search: " + sortedArr[0] + " result: " + BinarySearch.search(sortedArr, sortedArr[0]));
+        System.out.println("search: " + sortedArr[sortedArr.length - 1] + " result: " + BinarySearch.search(sortedArr, sortedArr[sortedArr.length - 1]));
+        System.out.println("search: " + 1 + " result: " + BinarySearch.search(sortedArr, 1));
+
+        t = System.currentTimeMillis();
+        for (int i = 0; i < 10000000; i++) {
+            BinarySearch.search(sortedArr, sortedArr[0]);
+        }
+        System.out.println("search 1: " + (System.currentTimeMillis() - t));
+
+        t = System.currentTimeMillis();
+        for (int i = 0; i < 10000000; i++) {
+            BinarySearch.search2(sortedArr, sortedArr[0]);
+        }
+        System.out.println("search 2: " + (System.currentTimeMillis() - t));
+
+
     }
 
     public static void testSort(int[] sortData, ISort sortImpl, String sortName) {
