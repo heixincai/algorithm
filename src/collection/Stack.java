@@ -4,7 +4,7 @@ public class Stack<T> implements IStack<T>{
 
     private Object[] mArr;
 
-    private static final int INIT_SIZE = 16;
+    private static final int INIT_SIZE = 4;
 
     private int mTop = -1;
 
