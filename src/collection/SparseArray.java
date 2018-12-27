@@ -9,6 +9,11 @@ public class SparseArray<E> {
     private Object[] mValues;
     private int mSize = 0;
 
+    /**
+     * 标记是否有DELETED元素标记
+     * */
+    private boolean mHasDELETED = false;
+
     public SparseArray() {
         this(10);
     }
@@ -21,6 +26,11 @@ public class SparseArray<E> {
     public void put(int key, E value) {
         int i = BinarySearch.search(mKeys, mSize, key);
         if (i >= 0) {
+
+            // 找到了有两种情况
+            // 1.是对应的mValues有一个有效的数据对象，直接覆盖
+            // 2.对应的mValues里面是一个DELETED对象，同样的，直接覆盖
+
             mValues[i] = value;
         } else {
             i = ~i;
@@ -36,8 +46,15 @@ public class SparseArray<E> {
                 return;
             }
 
-            insertKey(i, key);
-            insertValue(i, value);
+            // 另一种情况
+            // 如果有删除的元素，并且数组装满了，这个时候需要先GC，再重新搜一下key的位置
+            if (mHasDELETED && mSize >= mKeys.length) {
+                gc();
+                i = ~BinarySearch.search(mKeys, mSize, key);
+            }
+
+            mKeys = GrowingArrayUtil.insert(mKeys, mSize, i, key);
+            mValues = GrowingArrayUtil.insert(mValues, mSize, i, value);
             mSize++;
         }
     }
@@ -63,25 +80,39 @@ public class SparseArray<E> {
         int i = BinarySearch.search(mKeys, mSize, key);
         if (i >= 0 && mValues[i] != DELETED) {
             mValues[i] = DELETED;
+            mHasDELETED = true;
         }
     }
 
-    private void insertKey(int insertIndex, int insertValue) {
-        System.arraycopy(mKeys, insertIndex, mKeys, insertIndex + 1, mSize - insertIndex);
-        mKeys[insertIndex] = insertValue;
+    private void gc() {
+
+        int placeHere = 0;
+
+        for (int i = 0; i < mSize; i++) {
+            Object obj = mValues[i];
+            if (obj != DELETED) {
+                mKeys[placeHere] = mKeys[i];
+                mValues[placeHere] = obj;
+                mValues[i] = null;
+                placeHere++;
+
+
+            }
+        }
+
+        mHasDELETED = false;
+        mSize = placeHere;
     }
 
-    private void insertValue(int insertIndex, E insertValue) {
-        System.arraycopy(mValues, insertIndex, mValues, insertIndex + 1, mSize - insertIndex);
-        mValues[insertIndex] = insertValue;
+    public int size() {
+        if (mHasDELETED) {
+            gc();
+        }
+        return mSize;
     }
 
     @Override
     public String toString() {
         return super.toString();
-    }
-
-    public static void main(String[] args) {
-
     }
 }
