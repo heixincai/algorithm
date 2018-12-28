@@ -91,13 +91,15 @@ public class SparseArray<E> {
         for (int i = 0; i < mSize; i++) {
             Object obj = mValues[i];
             if (obj != DELETED) {
-                mKeys[placeHere] = mKeys[i];
-                mValues[placeHere] = obj;
-                mValues[i] = null;
+
+                if (i != placeHere) {
+                    mKeys[placeHere] = mKeys[i];
+                    mValues[placeHere] = obj;
+                    mValues[i] = null;
+                }
                 placeHere++;
-
-
             }
+
         }
 
         mHasDELETED = false;

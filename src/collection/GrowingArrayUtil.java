@@ -19,7 +19,7 @@ public class GrowingArrayUtil {
         int[] newArr = new int[rawArr.length * 2];
         System.arraycopy(rawArr, 0, newArr, 0, insertIndex);
         newArr[insertIndex] = insertValue;
-        System.arraycopy(rawArr, insertIndex + 1, newArr, insertIndex + 1, size - insertIndex);
+        System.arraycopy(rawArr, insertIndex, newArr, insertIndex + 1, size - insertIndex);
         return newArr;
     }
 
@@ -33,7 +33,7 @@ public class GrowingArrayUtil {
         Object[] newArr = new Object[rawArr.length * 2];
         System.arraycopy(rawArr, 0, newArr, 0, insertIndex);
         newArr[insertIndex] = insertValue;
-        System.arraycopy(rawArr, insertIndex + 1, newArr, insertIndex + 1, size - insertIndex);
+        System.arraycopy(rawArr, insertIndex, newArr, insertIndex + 1, size - insertIndex);
         return newArr;
     }
 }
