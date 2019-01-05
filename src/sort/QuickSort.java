@@ -48,24 +48,24 @@ public class QuickSort implements ISort {
     }
 
     private static int partition(int[] arr, int startIndex, int endIndex) {
-        int pivot = arr[endIndex];
+        int p = arr[endIndex];
+        int indexOfSortedLeft = startIndex - 1;
 
-        int nextSmallPlace = startIndex;
-
-        for (int p = startIndex; p < endIndex; p++) {
-            if (arr[p] < pivot) {
-                if (p != nextSmallPlace) {
-                    swap(arr, p, nextSmallPlace);
-                }
-                nextSmallPlace++;
+        for (int i = startIndex; i < endIndex; i++) {
+            if (arr[i] < p) {
+                swap(arr, i, indexOfSortedLeft + 1);
+                indexOfSortedLeft++;
             }
         }
-        swap(arr, nextSmallPlace, endIndex);
 
-        return nextSmallPlace;
+        swap(arr, indexOfSortedLeft + 1, endIndex);
+        return indexOfSortedLeft + 1;
     }
 
     private static void swap(int[] arr, int i, int j) {
+        if (i == j) {
+            return;
+        }
         int p = arr[i];
         arr[i] = arr[j];
         arr[j] = p;
