@@ -47,13 +47,6 @@ public class Test {
         }
         System.out.println("search 1: " + (System.currentTimeMillis() - t));
 
-        t = System.currentTimeMillis();
-        for (int i = 0; i < 10000000; i++) {
-            BinarySearch.search2(sortedArr, sortedArr[0]);
-        }
-        System.out.println("search 2: " + (System.currentTimeMillis() - t));
-
-
     }
 
     public static void testSort(int[] sortData, ISort sortImpl, String sortName) {
