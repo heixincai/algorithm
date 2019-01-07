@@ -40,10 +40,7 @@ public class QuickSortWriteFromMemTest implements ISort {
 
     @Test
     public void test() {
-        int[] data = new int[20];
-        for (int i = 0; i < data.length; i++) {
-            data[i] = (int) (Math.random() * 100);
-        }
+        int[] data = Util.prepareTestData(20);
 
         System.out.println(Arrays.toString(data));
         data = new QuickSortWriteFromMemTest().sort(data);

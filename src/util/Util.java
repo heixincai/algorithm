@@ -9,4 +9,12 @@ public class Util {
             data[b] = x;
         }
     }
+
+    public static int[] prepareTestData(int count) {
+        int[] data = new int[count];
+        for (int i = 0; i < count; i++) {
+            data[i] = (int) (Math.random() * 100);
+        }
+        return data;
+    }
 }
