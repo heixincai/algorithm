@@ -19,13 +19,15 @@ public class InsertSort implements ISort {
         }
 
         for (int i = 1; i < data.length; i++) {
-            int finder = i;
-            int val = data[i];
-            while (finder >= 0 && val < data[finder - 1]) {
-                data[finder] = data[finder - 1];
-                data[finder - 1] = val;
-                finder--;
+            int p = data[i];
+            int j = i - 1;
+
+            while (j >= 0 && data[j] > p) {
+                data[j + 1] = data[j];
+                j--;
             }
+
+            data[j + 1] = p;
         }
 
         return data;
