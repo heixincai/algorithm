@@ -5,6 +5,10 @@ import util.Util;
 
 import java.util.Arrays;
 
+/**
+ * 默写记录
+ * 2019-01-14 19:00:11
+ * */
 public class InsertSortWriteFromMemTest implements ISort {
 
 
