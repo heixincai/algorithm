@@ -6,6 +6,11 @@ import util.Util;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 默写记录
+ * 2019-01-14 18:50:05 默写一次
+ *
+ * */
 public class QuickSortWriteFromMemTest implements ISort {
 
     @Override
@@ -14,29 +19,29 @@ public class QuickSortWriteFromMemTest implements ISort {
         return data;
     }
 
-    private void sortIntern(int[] data, int l, int r) {
-        if (l < r) {
-            int m = partition(data, l, r);
-            sortIntern(data, l, m - 1);
-            sortIntern(data, m + 1, r);
+    private void sortIntern(int[] data, int lo, int hi) {
+        if (lo < hi) {
+            int m = parition(data, lo, hi);
+            sortIntern(data, lo, m - 1);
+            sortIntern(data, m + 1, hi);
         }
     }
 
-    private int partition(int[] data, int l, int r) {
-        int p = data[r];
+    private int parition(int[] data, int lo, int hi) {
+        int p = data[hi];
+        int x = lo - 1;
 
-        int x = l - 1;
-
-        for (int i = l; i < r; i++) {
+        for (int i = lo; i < hi; i++) {
             if (data[i] < p) {
-                Util.swap(data, i, ++x);
+                Util.swap(data, ++x, i);
             }
         }
 
-        Util.swap(data, r, ++x);
+        Util.swap(data, ++x, hi);
 
         return x;
     }
+
 
 
     @Test

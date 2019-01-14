@@ -3,6 +3,11 @@ package search;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 默写记录
+ * 2019-01-14 18:54:22 默写一次
+ *
+ * */
 public class BinarySearchWriteFromMemTest {
 
     public static int search(int[] data, int value) {
@@ -11,9 +16,8 @@ public class BinarySearchWriteFromMemTest {
         int hi = data.length - 1;
 
         while (lo <= hi) {
-            final int m = (lo + hi) / 2;
+            final int m = (lo + hi) >>> 1;
             final int v = data[m];
-
             if (v < value) {
                 lo = m + 1;
             } else if (v > value) {
