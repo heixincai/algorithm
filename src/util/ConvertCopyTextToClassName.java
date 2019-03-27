@@ -6,8 +6,8 @@ package util;
 public class ConvertCopyTextToClassName {
 
     public static void main(String[] s) {
-        String problem = "535. Encode and Decode TinyURL";
+        String problem = "1008. Construct Binary Search Tree from Preorder Traversal";
 
-        System.out.println("P" + problem.replace(".", "").replace(" ", "_"));
+        System.out.println("P" + problem.replace(".", "").replace(" ", "_").replace("-", "_"));
     }
 }
