@@ -1,16 +1,18 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class P890_Find_and_Replace_Pattern {
+
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> ret = new ArrayList<>();
-
-        List<Integer> pat = parse(pattern);
+        String standard = standard(pattern);
 
         for (String w : words) {
-            if (same(pat, parse(w))) {
+            if (standard(w).equals(standard)) {
                 ret.add(w);
             }
         }
@@ -18,35 +20,35 @@ class P890_Find_and_Replace_Pattern {
         return ret;
     }
 
-    public static List<Integer> parse(String pattern) {
-        List<Integer> arr = new ArrayList<>();
+    public static String standard(String pattern) {
+        Map<Character, Character> maps = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        char availableC = 'a';
         int c = 0;
         for (int i = 0; i < pattern.toCharArray().length; i++) {
             if (i == 0) {
                 c = 1;
+                maps.put(pattern.charAt(i), availableC);
+                sb.append(availableC);
             } else {
                 if (pattern.charAt(i) == pattern.charAt(i - 1)) {
                     c++;
                 } else {
-                    arr.add(c);
+                    sb.append(c);
+                    if (maps.containsKey(pattern.charAt(i))) {
+                        sb.append(maps.get(pattern.charAt(i)));
+                    } else {
+                        availableC++;
+                        maps.put(pattern.charAt(i), availableC);
+                        sb.append(availableC);
+                    }
                     c = 1;
                 }
             }
         }
-        arr.add(c);
-        return arr;
-    }
 
-    public static boolean same(List<Integer> a1, List<Integer> a2) {
-        if (a1.size() != a2.size()) {
-            return false;
-        } else {
-            for (int i = 0; i < a1.size(); i++) {
-                if (a1.get(i).equals(a2.get(i))) {
-                    return false;
-                }
-            }
-            return true;
-        }
+        sb.append(c);
+
+        return sb.toString();
     }
 }
