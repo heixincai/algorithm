@@ -13,7 +13,7 @@ import java.nio.file.StandardOpenOption;
 public class ConvertCopyTextToClassName {
 
     public static void main(String[] s) {
-        String problem = "894. All Possible Full Binary Trees";
+        String problem = "797. All Paths From Source to Target";
         String className = "P" + problem.replace(".", "").replace(" ", "_").replace("-", "_");
         String fileName = "src" + File.separator + "leetcode" + File.separator + className + ".java";
 
