@@ -13,9 +13,9 @@ import java.nio.file.StandardOpenOption;
 public class ConvertCopyTextToClassName {
 
     public static void main(String[] s) {
-        String problem = "797. All Paths From Source to Target";
+        String problem = "746. Min Cost Climbing Stairs";
         String className = "P" + problem.replace(".", "").replace(" ", "_").replace("-", "_");
-        String fileName = "src" + File.separator + "leetcode" + File.separator + className + ".java";
+        String fileName = "java" + File.separator + "src" + File.separator + "leetcode" + File.separator + className + ".java";
 
         System.out.println(fileName);
 
