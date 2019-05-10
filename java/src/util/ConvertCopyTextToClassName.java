@@ -13,7 +13,7 @@ import java.nio.file.StandardOpenOption;
 public class ConvertCopyTextToClassName {
 
     public static void main(String[] s) {
-        String problem = "653. Two Sum IV - Input is a BST";
+        String problem = "530. Minimum Absolute Difference in BST";
         String className = "P" + problem.replace(".", "").replace(" ", "_").replace("-", "_");
         String fileName = "java" + File.separator + "src" + File.separator + "leetcode" + File.separator + className + ".java";
 
