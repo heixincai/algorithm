@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class ConvertCopyTextToClassName {
 
     public static void main(String[] s) {
+        System.out.print("Plz input question name:");
         Scanner scanner = new Scanner(System.in);
         String problem = scanner.nextLine();
         //String problem = "107. Binary Tree Level Order Traversal II";
