@@ -16,14 +16,15 @@ public class BinarySearchWriteFromMemTest {
         int hi = data.length - 1;
 
         while (lo <= hi) {
-            final int m = (lo + hi) >>> 1;
-            final int v = data[m];
-            if (v < value) {
-                lo = m + 1;
-            } else if (v > value) {
-                hi = m - 1;
+            int mid = (lo + hi) / 2;
+            int p = data[mid];
+
+            if (p > value) {
+                hi = mid - 1;
+            } else if (p < value) {
+                lo = mid + 1;
             } else {
-                return m;
+                return mid;
             }
         }
 
