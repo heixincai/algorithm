@@ -9,6 +9,7 @@ import java.util.Random;
 /**
  * 默写记录
  * 2019-01-14 18:50:05 默写一次
+ * 2019-08-15 21:29:24
  *
  * */
 public class QuickSortWriteFromMemTest implements ISort {
@@ -21,29 +22,26 @@ public class QuickSortWriteFromMemTest implements ISort {
 
     private void sortIntern(int[] data, int start, int end) {
         if (start < end) {
-            int m = partition(data, start, end);
-            sortIntern(data, start, m - 1);
-            sortIntern(data, m + 1, end);
+            int p = partition(data, start, end);
+            sortIntern(data, start, p - 1);
+            sortIntern(data, p + 1, end);
         }
     }
 
     private int partition(int[] data, int start, int end) {
         int p = data[end];
-        int sorted = start - 1;
+        int sortedIndex = start - 1;
 
         for (int i = start; i < end; i++) {
             if (data[i] < p) {
-                Util.swap(data, i , sorted + 1);
-                sorted++;
+                Util.swap(data, i, ++sortedIndex);
             }
         }
 
-        Util.swap(data, sorted + 1, end);
+        Util.swap(data, sortedIndex + 1, end);
 
-        return sorted + 1;
+        return sortedIndex + 1;
     }
-
-
 
     @Test
     public void test() {
