@@ -18,7 +18,7 @@ public class ConvertCopyTextToClassName {
         Scanner scanner = new Scanner(System.in);
         String problem = scanner.nextLine();
         //String problem = "107. Binary Tree Level Order Traversal II";
-        String className = "P" + problem.replace(".", "").replace(" ", "_").replace("-", "_");
+        String className = "P" + problem.replace("", "").replace(" ", "_").replace("-", "_");
         String fileName = "java" + File.separator + "src" + File.separator + "leetcode" + File.separator + className + ".java";
 
         System.out.println(fileName);
