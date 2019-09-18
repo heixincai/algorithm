@@ -16,9 +16,8 @@ public class BinarySearchWriteFromMemTest {
         int hi = data.length - 1;
 
         while (lo <= hi) {
-            int mid = (lo + hi) / 2;
-            int p = data[mid];
-
+            final int mid = (lo + hi) / 2;
+            final int p = data[mid];
             if (p > value) {
                 hi = mid - 1;
             } else if (p < value) {
@@ -29,6 +28,7 @@ public class BinarySearchWriteFromMemTest {
         }
 
         return ~lo;
+
     }
 
     @Test
