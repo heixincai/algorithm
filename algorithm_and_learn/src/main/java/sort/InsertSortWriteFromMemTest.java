@@ -6,16 +6,25 @@ import util.Util;
 import java.util.Arrays;
 
 /**
- * 默写记录
- * 2019-01-14 19:00:11
- * 2019-01-18 00:34:29
- * 2019-08-15 21:29:18
  * */
 public class InsertSortWriteFromMemTest implements ISort {
 
     @Override
     public int[] sort(int[] data) {
-        return null;
+
+        for (int i = 1; i < data.length - 1; i++) {
+            int p = data[i];
+            int j = i - 1;
+
+            while (j >= 0 && data[j] > p) {
+                data[j + 1] = data[j];
+                j--;
+            }
+
+            data[j + 1] = p;
+        }
+
+        return data;
     }
 
     @Test
