@@ -1,6 +1,7 @@
 package sort;
 
 import sort.ISort;
+import util.Util;
 
 import java.util.Arrays;
 
@@ -37,9 +38,12 @@ public class QuickSort implements ISort {
         }
     }
 
+    /**
+     * 1. start, end 都是include的index
+     * */
     private static void quickSortIntern(int arr[], int start, int end) {
         if (arr != null) {
-            if (start < end) {
+            if (start < end) { // 2. 这里要 start < end
                 int x = partition(arr, start, end);
                 quickSortIntern(arr, start, x - 1);
                 quickSortIntern(arr, x + 1, end);
@@ -48,27 +52,27 @@ public class QuickSort implements ISort {
     }
 
     private static int partition(int[] arr, int startIndex, int endIndex) {
+        // 3. 取出最后一个数，作为一个判断值
         int p = arr[endIndex];
+
+        // 4. 左边已经排好的index
         int indexOfSortedLeft = startIndex - 1;
 
+        // 5. 遍历所有的数，除了最后一个
         for (int i = startIndex; i < endIndex; i++) {
+
+            // 6. 如果当前的这个数，小于判断值p，就将它交换到下一个需要放置的位置上
             if (arr[i] < p) {
-                swap(arr, i, indexOfSortedLeft + 1);
-                indexOfSortedLeft++;
+                Util.swap(arr, i, indexOfSortedLeft + 1);
+                indexOfSortedLeft++; // 7. 再自增自己，此时，index指向的已经排好的元素，下一个才是未知的元素
             }
         }
 
-        swap(arr, indexOfSortedLeft + 1, endIndex);
-        return indexOfSortedLeft + 1;
-    }
+        //8. 交换判断值p和排好的下一个元素的值
+        Util.swap(arr, indexOfSortedLeft + 1, endIndex);
 
-    private static void swap(int[] arr, int i, int j) {
-        if (i == j) {
-            return;
-        }
-        int p = arr[i];
-        arr[i] = arr[j];
-        arr[j] = p;
+        // 9. 然后再返回这个中间值p
+        return indexOfSortedLeft + 1;
     }
 
     /**

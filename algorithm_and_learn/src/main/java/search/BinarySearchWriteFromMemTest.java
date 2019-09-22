@@ -4,9 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * 默写记录
- * 2019-01-14 18:54:22 默写一次
- *
  * */
 public class BinarySearchWriteFromMemTest {
 
@@ -16,8 +13,9 @@ public class BinarySearchWriteFromMemTest {
         int hi = data.length - 1;
 
         while (lo <= hi) {
-            final int mid = (lo + hi) / 2;
-            final int p = data[mid];
+            int mid = (lo + hi) / 2;
+            int p = data[mid];
+
             if (p > value) {
                 hi = mid - 1;
             } else if (p < value) {
@@ -28,7 +26,6 @@ public class BinarySearchWriteFromMemTest {
         }
 
         return ~lo;
-
     }
 
     @Test
