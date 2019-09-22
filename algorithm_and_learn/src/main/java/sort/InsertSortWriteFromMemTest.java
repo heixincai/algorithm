@@ -12,7 +12,7 @@ public class InsertSortWriteFromMemTest implements ISort {
     @Override
     public int[] sort(int[] data) {
 
-        for (int i = 1; i < data.length - 1; i++) {
+        for (int i = 1; i < data.length; i++) {
             int p = data[i];
             int j = i - 1;
 
