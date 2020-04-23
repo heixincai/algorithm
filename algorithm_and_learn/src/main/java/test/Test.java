@@ -1,15 +1,35 @@
 package test;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import search.BinarySearch;
 import sort.*;
 
-import java.util.Arrays;
+import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * Created by krosshuang on 2018/11/3.
  */
 public class Test {
+
+    public static void main(String[] args) {
+        Integer[] arr = new Integer[]{3, 34, 89, 56, 72, 63, 29, 74, 69};
+        List<Integer> list = new ArrayList<>();
+        Collections.addAll(list, arr);
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        list.forEach(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) {
+                System.out.println(integer);
+            }
+        });
+    }
 
     static int loopCount = 100000;
 

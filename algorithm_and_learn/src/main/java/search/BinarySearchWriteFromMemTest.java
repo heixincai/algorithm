@@ -8,23 +8,18 @@ import org.junit.Test;
 public class BinarySearchWriteFromMemTest {
 
     public static int search(int[] data, int value) {
-
         int lo = 0;
         int hi = data.length - 1;
-
         while (lo <= hi) {
             int mid = (lo + hi) / 2;
-            int p = data[mid];
-
-            if (p > value) {
+            if (data[mid] > value) {
                 hi = mid - 1;
-            } else if (p < value) {
+            } else if (data[mid] < value) {
                 lo = mid + 1;
             } else {
                 return mid;
             }
         }
-
         return ~lo;
     }
 

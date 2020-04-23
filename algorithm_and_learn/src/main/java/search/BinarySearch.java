@@ -7,6 +7,9 @@ public class BinarySearch {
     // final比没有final快5毫秒
     // 逻辑右移比算术右移快2毫秒
 
+    // 问题1：为什么要返回 ~lo ?
+    // 回答：返回 ~lo
+
     public static int search(int[] arr, int target) {
         return search(arr, arr.length, target);
     }
