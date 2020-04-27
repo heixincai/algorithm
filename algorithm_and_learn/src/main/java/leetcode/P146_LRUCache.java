@@ -1,7 +1,5 @@
 package leetcode;
 
-import sun.misc.LRUCache;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -40,14 +38,7 @@ public class P146_LRUCache {
         if (maps.containsKey(key)) {
             ret = maps.get(key);
 
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i) == key) {
-                    list.remove(i);
-                    break;
-                }
-            }
-
-            list.add(0, key);
+            updateLink(key);
         }
 
         return ret;
@@ -56,17 +47,20 @@ public class P146_LRUCache {
     public void put(int key, int value) {
         maps.put(key, value);
 
+        updateLink(key);
+
+        if (list.size() > cap) {
+            maps.remove(list.removeLast());
+        }
+    }
+
+    private void updateLink(int key) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) == key) {
                 list.remove(i);
                 break;
             }
         }
-
         list.add(0, key);
-
-        if (list.size() > cap) {
-            maps.remove(list.removeLast());
-        }
     }
 }
