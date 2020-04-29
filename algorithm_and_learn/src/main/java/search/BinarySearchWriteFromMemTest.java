@@ -8,7 +8,7 @@ import org.junit.Test;
 public class BinarySearchWriteFromMemTest {
 
     public static int search(int[] data, int value) {
-
+        return 0;
     }
 
     @Test
