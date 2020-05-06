@@ -17,6 +17,10 @@ public class QuickSortWriteFromMemTest implements ISort {
         return data;
     }
 
+    /**
+     * @param start include
+     * @param end include
+     * */
     private void sortIntern(int[] data, int start, int end) {
 
     }
