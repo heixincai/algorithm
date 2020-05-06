@@ -5,6 +5,10 @@ import org.junit.Assert;
 import search.BinarySearch;
 import sort.*;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -13,22 +17,13 @@ import java.util.function.Consumer;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[]{3, 34, 89, 56, 72, 63, 29, 74, 69};
-        List<Integer> list = new ArrayList<>();
-        Collections.addAll(list, arr);
-        Collections.sort(list, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        });
-        list.forEach(new Consumer<Integer>() {
-            @Override
-            public void accept(Integer integer) {
-                System.out.println(integer);
-            }
-        });
+    public static void main(String[] args) throws Throwable {
+        File file = new File("big.txt");
+        PrintStream bos = new PrintStream(new FileOutputStream(file));
+        for (int i = 0; i < 54321; i++) {
+            bos.println("第" + (i + 1) + "行 abcd 1234 qwer 1234 abcd 1234 qwer 1234 abcd 1234 qwer 1234 abcd 1234 qwer 1234 abcd 1234 qwer 1234 abcd 1234 qwer 1234");
+        }
+        bos.flush();
     }
 
     static int loopCount = 100000;

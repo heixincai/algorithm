@@ -18,25 +18,11 @@ public class QuickSortWriteFromMemTest implements ISort {
     }
 
     private void sortIntern(int[] data, int start, int end) {
-        if (start < end) {
-            int p = partition(data, start, end);
-            sortIntern(data, start, p - 1);
-            sortIntern(data, p + 1, end);
-        }
+
     }
 
     private int partition(int[] data, int start, int end) {
-        int p = data[end];
-        int sortedLeft = start - 1;
-
-        for (int i = start; i < end; i++) {
-            if (data[i] < p) {
-                Util.swap(data, i, ++sortedLeft);
-            }
-        }
-
-        Util.swap(data, end, ++sortedLeft);
-        return sortedLeft;
+        return 0;
     }
 
     @Test
